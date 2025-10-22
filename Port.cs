@@ -17,7 +17,9 @@ namespace PuttyComSelect
         {
             get
             {
-                return new ListViewItem(new[] { name, $"{since.Hour}:{since.Minute}" });
+                var hour = since.Hour.ToString("D2");
+                var minute = since.Minute.ToString("D2");
+                return new ListViewItem(new[] { name, $"{hour}:{minute}" });
             }
         }
     }

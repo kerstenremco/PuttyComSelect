@@ -44,12 +44,16 @@ namespace PuttyComSelect
             // Update the ComboBox with the current ports
             if (updated)
             {
-                // Sort ports by the time they were added
-                portsList.Items.Clear();
-                foreach (var port in ports.OrderBy(p => p.since).Reverse())
-                {
-                    portsList.Items.Add(port.PortView);
-                }
+                RefreshList();
+            }
+        }
+
+        private void RefreshList()
+        {
+            portsList.Items.Clear();
+            foreach (var port in ports.OrderBy(p => p.since).Reverse())
+            {
+                portsList.Items.Add(port.PortView);
             }
         }
 
@@ -111,6 +115,16 @@ namespace PuttyComSelect
                 portSpeed.Text = Properties.Settings.Default.Speed.ToString();
                 MessageBox.Show("Please enter a valid port speed.", "Invalid Input");
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void info_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
